@@ -1,0 +1,761 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --bg: #f4f8fb;
+  --ink: #0b1220;
+  --muted: #4a5b7c;
+  --surface: #ffffff;
+  --line: rgba(11, 18, 32, 0.08);
+  --brand: #00b39f;
+  --brand-deep: #007f73;
+  --positive: #167a50;
+  --negative: #b33a3a;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 5%, rgba(0, 179, 159, 0.12), transparent 33%),
+    radial-gradient(circle at 90% 0%, rgba(26, 115, 232, 0.12), transparent 30%),
+    var(--bg);
+}
+
+#root {
+  width: min(1160px, 92vw);
+  margin: 0 auto;
+  padding: 2rem 0 3rem;
+}
+
+.login-wrap {
+  min-height: calc(100vh - 5rem);
+  display: grid;
+  place-items: center;
+}
+
+.login-card {
+  width: min(420px, 92vw);
+  display: grid;
+  gap: 0.6rem;
+  padding: 1.3rem;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(13, 35, 67, 0.08);
+}
+
+.login-card h1 {
+  margin: 0;
+  font-family: "IBM Plex Serif", serif;
+}
+
+.login-card p {
+  margin: 0 0 0.2rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.login-card label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2e3b55;
+}
+
+.login-card input {
+  border: 1px solid rgba(11, 18, 32, 0.15);
+  border-radius: 10px;
+  padding: 0.62rem 0.8rem;
+  font: inherit;
+}
+
+.login-card input:focus {
+  outline: none;
+  border-color: rgba(0, 179, 159, 0.7);
+  box-shadow: 0 0 0 3px rgba(0, 179, 159, 0.16);
+}
+
+.login-card button {
+  margin-top: 0.3rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 0.62rem 0.9rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(120deg, var(--brand), var(--brand-deep));
+  cursor: pointer;
+}
+
+.login-error {
+  margin: 0.1rem 0 0;
+  color: #7e2424;
+  font-size: 0.88rem;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.05rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 24px rgba(13, 35, 67, 0.06);
+}
+
+.site-header h2 {
+  margin: 0;
+  font-family: "IBM Plex Serif", serif;
+  font-size: 1.35rem;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.site-nav button,
+.logout-btn {
+  border: 1px solid rgba(11, 18, 32, 0.15);
+  border-radius: 999px;
+  padding: 0.45rem 0.82rem;
+  font: inherit;
+  font-weight: 600;
+  background: #fff;
+  color: #24334f;
+  cursor: pointer;
+}
+
+.site-nav button.active {
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(120deg, var(--brand), var(--brand-deep));
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #24334f;
+  font-weight: 500;
+  flex-wrap: wrap;
+}
+
+.active-symbol-chip {
+  border: 1px solid rgba(0, 179, 159, 0.25);
+  border-radius: 999px;
+  padding: 0.24rem 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #0f6b61;
+  background: rgba(0, 179, 159, 0.12);
+}
+
+.dashboard-wrap {
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-family: "IBM Plex Serif", serif;
+  font-size: clamp(1.6rem, 2vw + 1rem, 2.6rem);
+  letter-spacing: 0.01em;
+}
+
+.dashboard-header p {
+  margin-top: 0.4rem;
+  color: var(--muted);
+}
+
+.symbol-search {
+  margin-top: 0.95rem;
+  max-width: 460px;
+}
+
+.symbol-search label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #2e3b55;
+}
+
+.symbol-search-row {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.symbol-search-row input {
+  flex: 1;
+  border: 1px solid rgba(11, 18, 32, 0.15);
+  border-radius: 999px;
+  padding: 0.58rem 0.95rem;
+  font: inherit;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.symbol-search-row input:focus {
+  outline: none;
+  border-color: rgba(0, 179, 159, 0.7);
+  box-shadow: 0 0 0 3px rgba(0, 179, 159, 0.18);
+}
+
+.symbol-search-row button {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.58rem 1rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(120deg, var(--brand), var(--brand-deep));
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.symbol-search-row button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 127, 115, 0.24);
+}
+
+.symbol-search-row button:disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+.symbol-chip-row {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.symbol-chip {
+  border: 1px solid rgba(11, 18, 32, 0.14);
+  border-radius: 999px;
+  padding: 0.26rem 0.7rem;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #2d3b58;
+  background: #fff;
+  cursor: pointer;
+}
+
+.symbol-chip.active {
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(120deg, var(--brand), var(--brand-deep));
+}
+
+.search-error {
+  margin: 0.5rem 0 0;
+  color: #7e2424;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.company-profile-card {
+  margin-top: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), #fff);
+  box-shadow: 0 10px 30px rgba(13, 35, 67, 0.07);
+  padding: 1rem;
+}
+
+.company-profile-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.company-profile-head h2 {
+  margin: 0;
+  font-size: clamp(1.15rem, 1.2vw + 0.8rem, 1.55rem);
+}
+
+.company-profile-head p {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+}
+
+.symbol-badge {
+  margin-left: 0.3rem;
+  border: 1px solid rgba(0, 179, 159, 0.35);
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.78rem;
+  color: #0c6359;
+  background: rgba(0, 179, 159, 0.12);
+}
+
+.market-cap-badge {
+  border: 1px solid rgba(11, 18, 32, 0.12);
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #24334f;
+  background: #fff;
+}
+
+.company-description {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.company-highlight-row {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.highlight-tag {
+  border-radius: 999px;
+  padding: 0.28rem 0.66rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #0c6359;
+  background: rgba(0, 179, 159, 0.11);
+}
+
+.kpi-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.kpi-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  padding: 0.8rem 0.9rem;
+}
+
+.kpi-card span {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.kpi-card strong {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 1.15rem;
+}
+
+.kpi-card p {
+  margin: 0.28rem 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.kpi-card.rise strong {
+  color: var(--positive);
+}
+
+.kpi-card.fall strong {
+  color: var(--negative);
+}
+
+.charts-grid {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: 1.75fr 1fr;
+  gap: 1rem;
+}
+
+.panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), #fff);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(13, 35, 67, 0.08);
+  padding: 1rem;
+}
+
+.panel-head h2 {
+  margin: 0 0 0.7rem;
+  font-size: 1.05rem;
+}
+
+.chart-shell {
+  height: 360px;
+}
+
+.loading-state {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.news-wrap {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: 0 10px 30px rgba(13, 35, 67, 0.08);
+  padding: 1rem;
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.news-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.news-button {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(120deg, var(--brand), var(--brand-deep));
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 127, 115, 0.24);
+}
+
+.news-button:active {
+  transform: translateY(0);
+}
+
+.news-error {
+  margin: 0 0 1rem;
+  padding: 0.65rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid rgba(178, 40, 40, 0.2);
+  background: rgba(178, 40, 40, 0.08);
+  color: #7e2424;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.9rem;
+}
+
+.news-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.9rem;
+  background: #fcfdff;
+}
+
+.news-card h3 {
+  margin: 0 0 0.55rem;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.news-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.news-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem !important;
+  font-size: 0.76rem;
+  color: #5d6d8a !important;
+  font-weight: 600;
+}
+
+.news-link {
+  display: inline-block;
+  margin-top: 0.7rem;
+  color: #006f64;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.news-link:hover {
+  text-decoration: underline;
+}
+
+.page-title {
+  margin-bottom: 0.9rem;
+}
+
+.page-title h2 {
+  margin: 0;
+  font-family: "IBM Plex Serif", serif;
+  font-size: clamp(1.35rem, 1vw + 1rem, 1.9rem);
+}
+
+.page-title p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+}
+
+.companies-page,
+.insights-page {
+  margin-bottom: 2rem;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.93);
+  box-shadow: 0 10px 30px rgba(13, 35, 67, 0.08);
+  padding: 1rem;
+}
+
+.companies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.85rem;
+}
+
+.company-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.9rem;
+  background: #fff;
+}
+
+.company-card.active {
+  border-color: rgba(0, 179, 159, 0.45);
+  box-shadow: 0 8px 18px rgba(0, 127, 115, 0.15);
+}
+
+.company-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.company-card-head h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.company-card-head p {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.company-card-description {
+  margin: 0.7rem 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.company-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.company-meta-grid span {
+  display: block;
+  font-size: 0.72rem;
+  color: #657695;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.company-meta-grid strong {
+  font-size: 0.88rem;
+  color: #23314b;
+}
+
+.company-action-btn,
+.insight-action-btn {
+  margin-top: 0.8rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.5rem 0.9rem;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(120deg, var(--brand), var(--brand-deep));
+  cursor: pointer;
+}
+
+.insights-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.insight-kpi-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  padding: 0.85rem 0.9rem;
+}
+
+.insight-kpi-card span {
+  display: block;
+  font-size: 0.76rem;
+  color: #5f7090;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.insight-kpi-card strong {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 1.06rem;
+}
+
+.insight-kpi-card p {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.insights-panel-grid {
+  margin-top: 0.9rem;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 0.9rem;
+}
+
+.insight-panel {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  padding: 0.9rem;
+}
+
+.insight-panel h3 {
+  margin: 0 0 0.7rem;
+}
+
+.insight-panel p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.insight-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.insight-item {
+  border: 1px solid rgba(11, 18, 32, 0.08);
+  border-radius: 11px;
+  padding: 0.55rem 0.65rem;
+}
+
+.insight-list-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+}
+
+.insight-progress {
+  margin-top: 0.4rem;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(11, 18, 32, 0.08);
+  overflow: hidden;
+}
+
+.insight-progress span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(120deg, var(--brand), var(--brand-deep));
+}
+
+.selected-insight-list {
+  margin: 0.75rem 0 0;
+  padding-left: 1rem;
+  color: #2a3955;
+}
+
+.selected-insight-list li {
+  margin-bottom: 0.35rem;
+}
+
+@media (max-width: 900px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+  .insights-kpi-grid,
+  .insights-panel-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-shell {
+    height: 310px;
+  }
+}
+
+@media (max-width: 640px) {
+  #root {
+    width: 94vw;
+    padding-top: 1.25rem;
+  }
+
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .news-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .symbol-search-row {
+    flex-direction: column;
+  }
+
+  .symbol-search-row button {
+    width: 100%;
+  }
+
+  .company-meta-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+ 
